@@ -1,0 +1,34 @@
+POST http://localhost:8080/bookings
+Content-Type: application/json
+
+{
+  "id": 1,
+  "guestName": "Vikas",
+  "phone": "9876543210",
+  "roomType": "Deluxe",
+  "checkIn": "2026-10-01",
+  "checkOut": "2026-10-03"
+}
+
+###
+GET http://localhost:8080/bookings
+
+###
+
+GET http://localhost:8080/bookings/1
+
+###
+DELETE http://localhost:8080/bookings/1
+
+###
+PUT http://localhost:8080/bookings/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "guestName": "Vikas Kumar",
+  "phone": "9876543210",
+  "roomType": "Suite",
+  "checkIn": "2026-10-01",
+  "checkOut": "2026-10-05"
+}
