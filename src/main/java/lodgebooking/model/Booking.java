@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 
 @Entity
 public class Booking {
@@ -11,8 +13,13 @@ public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotBlank(message = "Guest name is required")
     private String guestName;
+
+    @Pattern(regexp = "\\d{10}", message = "Phone must be 10 digits")
     private String phone;
+
     private String roomType;
     private String checkIn;
     private String checkOut;

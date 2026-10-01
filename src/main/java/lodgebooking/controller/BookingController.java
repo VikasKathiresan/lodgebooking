@@ -1,5 +1,6 @@
 package lodgebooking.controller;
 
+import jakarta.validation.Valid;
 import lodgebooking.model.Booking;
 import lodgebooking.repository.BookingRepository;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +19,7 @@ public class BookingController {
     }
 
     @PostMapping
-    public String createBooking(@RequestBody Booking booking) {
+    public String createBooking(@Valid @RequestBody Booking booking) {
         booking.setId(null);   // let the database create the id
         Booking saved = repository.save(booking);
         return "Booking received successfully! id=" + saved.getId();
@@ -38,7 +39,7 @@ public class BookingController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Booking> updateBooking(@PathVariable Long id,
-                                                 @RequestBody Booking updated) {
+                                                 @Valid @RequestBody Booking updated) {
         if (!repository.existsById(id)) {
             return ResponseEntity.notFound().build();
         }

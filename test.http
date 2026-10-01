@@ -1,8 +1,8 @@
+### 1. CREATE a valid booking (should save)
 POST http://localhost:8080/bookings
 Content-Type: application/json
 
 {
-  "id": 1,
   "guestName": "Vikas",
   "phone": "9876543210",
   "roomType": "Deluxe",
@@ -10,25 +10,47 @@ Content-Type: application/json
   "checkOut": "2026-10-03"
 }
 
-###
+### 2. CREATE with a BAD phone (should return 400)
+POST http://localhost:8080/bookings
+Content-Type: application/json
+
+{
+  "guestName": "Vikas",
+  "phone": "123",
+  "roomType": "Deluxe",
+  "checkIn": "2026-10-01",
+  "checkOut": "2026-10-03"
+}
+
+### 3. CREATE with an EMPTY name (should return 400)
+POST http://localhost:8080/bookings
+Content-Type: application/json
+
+{
+  "guestName": "",
+  "phone": "9876543210",
+  "roomType": "Deluxe",
+  "checkIn": "2026-10-01",
+  "checkOut": "2026-10-03"
+}
+
+### 4. GET all bookings
 GET http://localhost:8080/bookings
 
-###
-
+### 5. GET one booking
 GET http://localhost:8080/bookings/1
 
-###
-DELETE http://localhost:8080/bookings/1
-
-###
+### 6. UPDATE booking 1
 PUT http://localhost:8080/bookings/1
 Content-Type: application/json
 
 {
-  "id": 1,
   "guestName": "Vikas Kumar",
   "phone": "9876543210",
   "roomType": "Suite",
   "checkIn": "2026-10-01",
   "checkOut": "2026-10-05"
 }
+
+### 7. DELETE booking 1
+DELETE http://localhost:8080/bookings/1
